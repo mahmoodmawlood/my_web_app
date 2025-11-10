@@ -1,7 +1,7 @@
 {
     "name": "my_web_app",
     "short_name": "MyApp",
-    "start_url": "my_web_app",
+    "start_url": "/my_web_app/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#2196f3",
