@@ -1,54 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8">
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible" />
+    <meta
+      name="description"
+      content="Prayer time app for Kerkuk — Kerkuk Namaz"
+    />
+    <meta name="theme-color" content="#008080" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>My Web App</title>
-    <meta name="description" content="A Flutter web app.">
+    <!-- PWA + iOS support -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Kerkuk Namaz" />
+    <link rel="apple-touch-icon" href="icons/Icon-512.png" />
 
-    <!-- Flutter and iOS PWA settings -->
-    <meta name="theme-color" content="#000000">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Kerkuk Namaz">
+    <link rel="icon" type="image/png" sizes="32x32" href="icons/Icon-512.png" />
+    <title>Kerkuk Namaz</title>
 
-    <!-- Icons -->
-    <link rel="apple-touch-icon" href="icons/Icon-512.png">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="icons/Icon-512.png">
-    <!-- Manifest -->
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icons/Icon-512.png">
-    <!-- Flutter build base -->
-    <base href="/">
+    <!-- Flutter web bootstrap -->
+    <script src="flutter.js" defer></script>
   </head>
 
   <body>
-    <script src="flutter_bootstrap.js" async></script>
-    <script src="flutter.js" defer></script>
-  <script>
-    const serviceWorkerVersion = "357189868";
-
-    // GitHub Pages fix: register SW under correct scope
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('flutter-first-frame', function () {
-        navigator.serviceWorker
-          .register('flutter_service_worker.js', { scope: './' })
-          .then(function (reg) {
-            console.log('Service worker registered for scope:', reg.scope);
+    <script>
+      // Wait until Flutter engine is loaded
+      window.addEventListener("load", function () {
+        _flutter.loader
+          .loadEntrypoint({
+            serviceWorker: {
+              serviceWorkerVersion: null,
+            },
+            onEntrypointLoaded: function (engineInitializer) {
+              engineInitializer.initializeEngine().then(function (appRunner) {
+                appRunner.runApp();
+              });
+            },
           })
-          .catch(function (err) {
-            console.error('SW registration failed:', err);
+          .then(function () {
+            // Register service worker under correct GitHub Pages scope
+            if ("serviceWorker" in navigator) {
+              navigator.serviceWorker
+                .register("flutter_service_worker.js", { scope: "./" })
+                .then((reg) =>
+                  console.log("Service worker registered for:", reg.scope)
+                )
+                .catch((err) =>
+                  console.error("SW registration failed:", err)
+                );
+            }
           });
       });
-    }
-  </script>
-</body>
-</html>
-
-
+    </script>
   </body>
 </html>
