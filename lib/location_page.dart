@@ -159,18 +159,30 @@ void _closeApp(){
                ),
                              Row(
                                 children: [
+                                  ElevatedButton(
+                                  onPressed: _restoreDefault,
+                                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red.shade100),
+                                    //minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
+                                    ),
+                                     child: Text("عودة الى تاريخ اليوم", style: 
+                                              TextStyle(color: Colors.black ,fontSize:12,fontWeight: FontWeight.bold),
+                                              ),
+                                   ),
+                                    SizedBox(width: 2),
                                     Expanded(child: _buildInputField(_yrinit, _yrController)),
-                                    SizedBox(width: 1),
+                                    SizedBox(width: 2),
                                     Expanded(child: _buildInputField(_moninit, _mnController)),
-                                    SizedBox(width: 1),
+                                    SizedBox(width: 2),
                                      Expanded(child: _buildInputField(_dayinit, _dyController)),
                                 ],
                               ),  // end of date input rows
+
              Row(        // Main Central row encompassing two columns
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
                 Expanded(
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
 
                         
@@ -180,7 +192,7 @@ void _closeApp(){
                               ElevatedButton(
                                 onPressed: _getdata,
                                 style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.teal),
-                                  minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
+                                  //minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
                                   ),
                                 child: Text("أحسب المواقيت ", 
                                       style: TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.bold),
@@ -202,15 +214,15 @@ void _closeApp(){
                                 SizedBox(height: 2),
                                 _buildResultBox('Ishaa', _Isha,Colors.grey.shade200),  
 
-                                ElevatedButton(
+/*                                ElevatedButton(
                                   onPressed: _restoreDefault,
                                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red.shade100),
-                                    minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
+                                    //minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
                                     ),
-                                  child: Text("عودة الى تاريخ النظام", style: 
+                                  child: Text("عودة الى تاريخ اليوم", style: 
                                               TextStyle(color: Colors.black ,fontSize:12,fontWeight: FontWeight.bold),
                                               ),
-                                ),
+                                ),  */
                    
                         ],               //children of left column
                     ),                   // end of left column
@@ -220,8 +232,10 @@ void _closeApp(){
 // ----------------------------------------------------------------------------------------------------------
                                         // start of the right column
                 Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
                     child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,   // align right
+                        crossAxisAlignment: CrossAxisAlignment.stretch, //center,   // align right
                         mainAxisAlignment: MainAxisAlignment.start,   // start from top
                         children: [
                                 // 🔹 Dropdown to select a saved location
@@ -301,7 +315,7 @@ void _closeApp(){
                                             },              // end onPress
                                   
                                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.teal),
-                                         minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
+                                        // minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
                                     ),
 
                                         child: Text('أضف موقع', style: TextStyle(color: Colors.black, fontSize: 13,
@@ -326,7 +340,7 @@ void _closeApp(){
                                                       errorStyle:TextStyle(color: Colors.red,fontSize:12),
                                                       border: OutlineInputBorder(),
                                                       isDense: true,  // shrinks the height of the form
-                                                      contentPadding:EdgeInsets.symmetric(vertical:5, horizontal: 20),
+                                                     // contentPadding:EdgeInsets.symmetric(vertical:5, horizontal: 20),
                                                     ),
                                                      validator: (value) {
                                                     if (value == null || value.isEmpty) return 'أدخل الموقع';
@@ -337,7 +351,7 @@ void _closeApp(){
                                                     //return null;
                                                 ),
 
-                                                //SizedBox(height:10),
+                                                SizedBox(height:5),
                                                 TextFormField(
                                                     style: const TextStyle(fontSize:13,fontWeight: FontWeight.bold),   // to control the height
                                                     controller: _latController,
@@ -347,7 +361,7 @@ void _closeApp(){
                                                       errorStyle:TextStyle(color: Colors.red,fontSize:12),
                                                       border: OutlineInputBorder(),
                                                       isDense: true,  // shrinks the height of the form
-                                                      contentPadding:EdgeInsets.symmetric(vertical:5, horizontal: 20),
+                                                      //contentPadding:EdgeInsets.symmetric(vertical:5, horizontal: 20),
                                                       ),
                                                  //   keyboardType: TextInputType.numberWithOptions(decimal:true),
                                                   //  inputFormatters: [
@@ -362,7 +376,7 @@ void _closeApp(){
                                                     return null;
                                                     }, 
                                                 ),          // end of latitude Input Form
-                                                //SizedBox(height:10),
+                                                SizedBox(height:5),
 
                                                 TextFormField(
                                                     style: const TextStyle(fontSize:13,fontWeight: FontWeight.bold),
@@ -373,7 +387,7 @@ void _closeApp(){
                                                       errorStyle:TextStyle(color: Colors.red,fontSize:12),
                                                       border: OutlineInputBorder(),
                                                       isDense: true,  // shrinks the height of the form
-                                                      contentPadding:EdgeInsets.symmetric(vertical:5, horizontal: 20),
+                                                      //contentPadding:EdgeInsets.symmetric(vertical:5, horizontal: 20),
                                                       ),
                                                     keyboardType: TextInputType.numberWithOptions(decimal:true),
                                                   //  inputFormatters: [
@@ -389,7 +403,7 @@ void _closeApp(){
                                                     }, 
                                                 ),          // end of lonng Input Form
 
-                                                //SizedBox(height:10),
+                                                SizedBox(height:5),
                                                 TextFormField(
                                                     style: const TextStyle(fontSize:13,fontWeight: FontWeight.bold),
                                                     controller: _tzController,
@@ -399,7 +413,7 @@ void _closeApp(){
                                                       errorStyle:TextStyle(color: Colors.red,fontSize:12),
                                                       border: OutlineInputBorder(),
                                                       isDense: true,  // shrinks the height of the form
-                                                      contentPadding:EdgeInsets.symmetric(vertical:5, horizontal: 20),
+                                                     // contentPadding:EdgeInsets.symmetric(vertical:5, horizontal: 20),
                                                     ),
                                                     keyboardType: TextInputType.numberWithOptions(decimal:true),
                                                   /*  inputFormatters: [
@@ -438,7 +452,7 @@ void _closeApp(){
                                               ),
                                     ),      */
 
-                                    SizedBox(height:3),
+                                    SizedBox(height:5),
                                     // delete selected location   ******************************DELETE SELECTED
                                     ElevatedButton(
                                       onPressed: (){
@@ -469,7 +483,7 @@ void _closeApp(){
                                       },
 
                                       style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.teal),
-                                            minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
+                                           // minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
                                          ),
 
                                       child: Text("أحذف الموقع المختار", style:
@@ -485,7 +499,7 @@ void _closeApp(){
                 RestartWidget.restartApp(context);
               },
             ),  */
-                                SizedBox(height: 1),
+                                SizedBox(height: 5),
 
                                 ElevatedButton(
                                   onPressed: () {
@@ -495,9 +509,9 @@ void _closeApp(){
                                   //onPressed: _restoreDefault,
                                 
                                   style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.red.shade100),
-                                    minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
+                                    // minimumSize: MaterialStateProperty.all<Size>(const Size(100,30)),
                                     ),
-                                  child: Text("اعد موقع وتاريخ النظام", style: 
+                                  child: Text("عودة للوضع الاساسي", style: 
                                               TextStyle(color: Colors.black ,fontSize:12,fontWeight: FontWeight.bold),
                                               ),
                                 ),
@@ -515,7 +529,7 @@ void _closeApp(){
                         ],                               // end of children of Right column
 
                     ),                                   // end of Right side column
-
+                  ),   // end of padding
                 ),                                       // end of second expanded
             ],                                           // end of main Children
          ),                                               // end of Main Row
@@ -534,36 +548,47 @@ void _closeApp(){
 
 
   // Helper function to build Result Boxes
-  Widget _buildResultBox(String title, String value, Color fill ) {
-    return Container(
-      //margin: EdgeInsets.only(left:100),
-      //width: double.infinity,
-      width: double.infinity,
-      height:35,
-      padding: EdgeInsets.all(2),
-      decoration: BoxDecoration(
-        color: fill, //grey[100],
-        border: Border.all(color: Colors.blue),
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          /*Text(
-            title,
-            //style: TextStyle(fontSize:10),
-            textDirection: TextDirection.ltr,
-          ),*/
-          SizedBox(height: 8),
-          Text(value.isNotEmpty ? value : '    ',
-            textDirection: TextDirection.rtl,
-            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-          ),
+Widget _buildResultBox(String title, String value, Color fill) {
+  return Container(
+    padding: EdgeInsets.all(8),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(16),
+      gradient: LinearGradient(
+        begin: Alignment.center, //topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          fill.withOpacity(0.8),
+          fill.withOpacity(0.45),
         ],
       ),
-    );
-  }
+      boxShadow: [
+        BoxShadow(
+          blurRadius: 6,
+          offset: Offset(0, 2),
+          color: Colors.black12,
+        )
+      ],
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center, // start,
+      children: [
+       /* Text(
+          title,
+          style: TextStyle(fontSize: 12, color: Colors.black54),
+        ), */
+        SizedBox(height: 6),
+        Text(
+          value.isNotEmpty ? value : '—',
+          style: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+          ),
+          textDirection: TextDirection.rtl,
+        ),
+      ],
+    ),
+  );
+}
 
 // Helper function to build input boxes for prayer times
   // Helper function to create input fields for
@@ -571,11 +596,11 @@ void _closeApp(){
     return 
       SizedBox(
        
-        width: 70,
-        height: 35,
+      //  width: 70,
+      //  height: 35,
         
           child: TextField(
-          style: TextStyle(color: Colors.black, fontSize: 12, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.black, fontSize: 13, fontWeight: FontWeight.bold),
           controller: controller,
           decoration: InputDecoration(filled: true, fillColor:
                                                       Colors.lightGreen[200],
