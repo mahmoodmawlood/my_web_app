@@ -29,14 +29,14 @@
       "short_name": "Times",
       "description": "Quick access to prayer times",
       "url": "/my_web_app/",
-      "icons": [{ "src": "icons/Icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "icons/Icon-512.png", "sizes": "192x192" }]
     },
     {
       "name": "Settings",
       "short_name": "Settings",
       "description": "Open the settings page",
       "url": "/my_web_app/settings",
-      "icons": [{ "src": "icons/Icon-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "icons/Icon-512.png", "sizes": "512x512" }]
     }
   ],
 
