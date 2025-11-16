@@ -1,6 +1,6 @@
 {
   "name": "Kerkuk Namaz",
-  "short_name": "Namaz",
+  "short_name": "Prayer",
   "id": "/",
   "description": "Prayer time app for Kerkuk",
   "start_url": "/my_web_app/",
